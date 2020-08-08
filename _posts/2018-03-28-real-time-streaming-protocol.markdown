@@ -3,6 +3,8 @@ layout: post
 title:  "What is the Real Time Streaming Protocol?"
 date:   2018-03-28 00:00:00 -0700
 categories: papers
+image: "/assets/images/rtsp/rtsp-streaming-netflix.jpg"
+description: "An analysis of the Real Time Streaming Protocol (RTSP). A term paper for my Networks 2 class."
 author: Chandler Severson
 ---
 

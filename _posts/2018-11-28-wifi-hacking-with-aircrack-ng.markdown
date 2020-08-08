@@ -3,6 +3,8 @@ layout: post
 title:  "The Process of Wi-Fi Hacking with AircrackNg"
 date:   2018-11-28 00:00:00 -0700
 categories: papers
+image: "/assets/images/wifi-hacking/wifi-header.jpg"
+description: "An article detailing how to install and use the WiFi hacking tool Aircrack-ng, along with its other components."
 author: Chandler Severson
 ---
 

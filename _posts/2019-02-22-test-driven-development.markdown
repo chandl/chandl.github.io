@@ -3,6 +3,8 @@ layout: post
 title:  "What is Test Driven Development?"
 date:   2019-02-22 00:00:00 -0700
 categories: papers
+image: "/assets/images/tdd/tdd-header.jpg"
+description: "A paper and slide deck on Test Driven Development. A term project for Systems Analysis."
 author: Chandler Severson
 ---
 
