@@ -11,14 +11,15 @@ layout: default
 -->
 
 {% include blog/header.html %}
+{% assign posts = site.categories[page.category] | default: site.posts %}
 
 <section class="mh-blog">
     <div class="container">
         <div class="row section-separator">
             <div class="col-md-8">
                 <div class="row">
-                    {% for post in site.posts %}
-                    <div class="col-sm-12 col-md-6">
+                    {% for post in posts %}
+                    <div class="col-sm-12 col-md-6 blog-post category-{{ post.categories }}">
                         <div class="mh-blog-item dark-bg">
                             <img src="{{ post.image }}" alt="" class="img-fluid">
                             <div class="blog-inner">
@@ -71,11 +72,9 @@ layout: default
 <script src="{{site.baseurl}}/assets/plugins/js/jquery.nav.js"></script>
 <!-- Fancybox js-->
 <script src="{{site.baseurl}}/assets/plugins/js/jquery.fancybox.min.js"></script>
-<!-- Map api -->
-<script src="//maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyCRP2E3BhaVKYs7BvNytBNumU0MBmjhhxc"></script>
 <!-- isotope js-->
 <script src="{{site.baseurl}}/assets/plugins/js/isotope.pkgd.js"></script>
 <script src="{{site.baseurl}}/assets/plugins/js/packery-mode.pkgd.js"></script>
 <!-- Custom Scripts-->
-<script src="{{site.baseurl}}/assets/js/map-init.js"></script>
 <script src="{{site.baseurl}}/assets/js/custom-scripts.js"></script>
+<script src="{{site.baseurl}}/assets/js/post-filter.js"></script>
