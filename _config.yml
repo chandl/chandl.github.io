@@ -10,3 +10,9 @@ resume_url: "https://drive.google.com/file/d/1R4TYUs-TFfwRkajIDn85tiloUQQDyH50/v
 collections:
   - experience
   - education
+  - project
+
+social_links:
+  linkedin: "https://www.linkedin.com/in/chandler-severson/"
+  github: "https://github.com/chandl"
+  stackoverflow: "https://stackoverflow.com/users/6321578/chandler"
