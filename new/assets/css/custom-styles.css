@@ -1,0 +1,10 @@
+
+.work-img {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.work-img img {
+    width: inherit !important;
+    margin: 0 auto;
+}
