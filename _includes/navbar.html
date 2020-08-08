@@ -17,9 +17,14 @@
             
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-0 ml-auto">
+                        {% if page.layout == "home" %}
                         <li class="nav-item active">
+                        {% else %}
+                        <li class="nav-item">
+                        {% endif %}
                             <a class="nav-link" href="{{site.baseurl}}/">Home</a>
                         </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="{{site.baseurl}}/#mh-about">About</a>
                         </li>
@@ -35,9 +40,14 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{site.baseurl}}/#mh-blog">Featured Posts</a>
                         </li>
-                        <li class="nav-item">
+                        {% if page.layout == "blog" or page.layout == "post" %}
+                        <li class="nav-item active">
+                        {% else %}
+                        <li class="nav-item"> 
+                        {% endif %}
                             <a class="nav-link" href="{{site.baseurl}}/blog">Blog</a>
-                        </li>
+                        </li> 
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="#mh-contact">Contact</a>
                         </li>
