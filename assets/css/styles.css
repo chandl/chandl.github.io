@@ -2143,6 +2143,31 @@ li .fa {
   color: #0ac4a7;
 }
 
+blockquote{
+  /* font-size: 1.1em; */
+  margin: 0 auto;
+  /* font-family:Open Sans; */
+  /* font-style:italic; */
+  color: #555555;
+  padding:1em 30px .5em 2em;
+  border-left:2px solid #5da4d9 ;
+  line-height:1.6;
+  position: relative;
+  background:#EDEDED;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
 /*
     ==============
        MH VIDEO
