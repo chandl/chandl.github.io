@@ -3,7 +3,7 @@ layout: post
 title:  "The Process of Wi-Fi Hacking with AircrackNg"
 date:   2018-11-28 00:00:00 -0700
 categories: papers
-image: "/assets/images/wifi-hacking/wifi-header.jpg"
+image: "/assets/images/blog/wifi-hacking/wifi-header.jpg"
 description: "An article detailing how to install and use the WiFi hacking tool Aircrack-ng, along with its other components."
 author: Chandler Severson
 ---
@@ -45,7 +45,7 @@ Setting up Aircrack­-ng was quite a task. Many prerequisites are required to be
 ### Finding the Network Card
 The first step of installation was to find out what network card our setup was using. We already knew that the network card built in to our machine was a PCI device, but we needed more information. To get that, we used the command `lspci ­-nn` to find our PCI devices:
 
- ![Command Output of lspci]({{ site.baseurl }}/assets/images/wifi-hacking/lspci.jpg) 
+ ![Command Output of lspci]({{ site.baseurl }}/assets/images/blog/wifi-hacking/lspci.jpg) 
  
  From the results of this command, we found that our network card was a `Broadcom BCM4331 802.11a/b/g/n` card with `14e4:4331` being the PCI ID. This PCI ID was important for later steps while finding our exact device on driver websites. 
 
@@ -56,7 +56,7 @@ Aircrack-­ng’s website that displayed chipset support information [2] also di
 
 For the sake of driver compatibility, we went ahead and chose to install the `b43` driver, even though our card was not fully supported by Aircrack­-ng. The installation process was fairly straight­forward, consisting of only a few steps. The first step was to download the driver/firmware installer. To do this, we used the command `apt­-get install firmware­-b43-­installer`. This command did the majority of the work getting the `b43` driver, it downloaded and put the files in the correct place. After performing that command, we went into our “Additional Drivers” properties and unchecked the active, proprietary drivers being used. 
 
-![Selecting the correct driver]({{ site.baseurl }}/assets/images/wifi-hacking/driver-selection.jpg) 
+![Selecting the correct driver]({{ site.baseurl }}/assets/images/blog/wifi-hacking/driver-selection.jpg) 
 
 This prompted a restart, and after booting back up, the driver was working properly.
 
@@ -121,7 +121,7 @@ Network sniffing is always the first step in finding a target network. There are
 
 To put our device into monitor mode, we first found our NIC’s (Network Interface Card) name. We did this with the command `iwconfig`
 
-![iwconfig output]({{ site.baseurl }}/assets/images/wifi-hacking/iwconfig.jpg) 
+![iwconfig output]({{ site.baseurl }}/assets/images/blog/wifi-hacking/iwconfig.jpg) 
 
 The NIC’s name is found at the top left, and is displayed (in our case) as `wlp4s0b1`. 
 
@@ -136,13 +136,13 @@ WARNING: unable to start monitor mode, please run "airmon-­ng check kill"
 
 After searching online, we found that this was caused by the *NetworkManager* process running. We stopped that service with the command `sudo service NetworkManager stop`. After stopping the service, we were able to perform the `sudo airmon­-ng start wlp4s0b1` command successfully
 
-![Started Airmon-Ng]({{ site.baseurl }}/assets/images/wifi-hacking/airmon-start.jpg) 
+![Started Airmon-Ng]({{ site.baseurl }}/assets/images/blog/wifi-hacking/airmon-start.jpg) 
 
 Turning the NetworkManager service off had a side effect of stopping network activity and not allowing the device to browse the internet. This can later be fixed by restarting the NetworkManager service. 
 
 After successfully performing the `airmon-­ng` command, we checked the status of our network card with the command `iwconfig`. This displayed that the card was in Monitor mode and that the name of the device was changed slightly from *wlp4s0b1* to *wlp4s0b1**mon**​*. Once we had our device in Monitor mode, we moved on to the next step: actually sniffing for networks. We did this with the command `sudo airodump-­ng wlp4s0b1mon`. Airodump-­ng hops from one network channel to another and shows all access points that it can receive beacons from [1] 
 
-![Airodump-ng network scan]({{ site.baseurl }}/assets/images/wifi-hacking/airodump-scan.jpg) 
+![Airodump-ng network scan]({{ site.baseurl }}/assets/images/blog/wifi-hacking/airodump-scan.jpg) 
 
 The top section of the program shows all of the scanned networks, their BSSIDs, the signal strength (shown as PWR), the amount of beacons sent, the channel that it’s on, its encryption type, cipher type, authentication type, and its ESSID or network name. The bottom half of the program shows clients (other computers) found talking to the networks. Shown is the BSSID and name/probe of the network, the station’s MAC address, and how many frames have been captured from it.
 
@@ -151,7 +151,7 @@ Sniffing for initialization vectors is an important part of the cracking process
 
 In order to sniff for IVs, we use the same command that we used to sniff for networks, albeit with a few different flags. The basic syntax for it is as follows: `sudo airodump­-ng -­c channel -​­­bssid BSSID -​­w dump​NIC_name`​. `Channel` r​efers to the channel that the target network is operating on, `BSSID`​ refers to the MAC address of the target network, the `-­w dump` ​flag writes the captured IV packets to a file called *dump*, and `NIC_name` i​s your NIC’s name. Once you perform this command, a new window will come up showing the network and its information, as well as any clients that are connected. This command will capture IV packets and log them to a file. 
 
-![Airodump-ng IV scan]({{ site.baseurl }}/assets/images/wifi-hacking/airodump-iv-scan.jpg) 
+![Airodump-ng IV scan]({{ site.baseurl }}/assets/images/blog/wifi-hacking/airodump-iv-scan.jpg) 
 
 Leave this program running until it has captured between 40,000 to 80,000 IV packets and then proceed onto the cracking step.
 
@@ -163,7 +163,7 @@ These first two steps outlined previously are two major components to cracking n
 
 Once you have captured a sufficient amount of IVs from a network, you can proceed to try and crack the network key. This is done with the following command: `sudo aircrack­-ng -­b BSSID ​dump­file.cap`​. `BSSID` ​is the MAC address of the target network and `dump­file.cap` ​is the file that is generated while sniffing for IVs. Performing this command will test the network keys.
 
-![WEP Key Cracked]({{ site.baseurl }}/assets/images/wifi-hacking/wep-key-cracked.jpg) 
+![WEP Key Cracked]({{ site.baseurl }}/assets/images/blog/wifi-hacking/wep-key-cracked.jpg) 
 
 
 #### Active Attacks
@@ -176,14 +176,14 @@ WPA2 is a common network security algorithm that is much more secure than WEP. C
 
 In order to deauthenticate someone against their AP, we can use a function built into aireplay­ng. `aireplay­-ng --­­deauth 100 ​­-a BSSID NIC_Name`​, where 100 is the number of deauthenticate frames that you want to send. This is a packet­-injection method, and an example of the output is shown below:
 
-![Deauthenticating user on a WPA2 Network]({{ site.baseurl }}/assets/images/wifi-hacking/wpa2-deauth.jpg) 
+![Deauthenticating user on a WPA2 Network]({{ site.baseurl }}/assets/images/blog/wifi-hacking/wpa2-deauth.jpg) 
 > Image Credit: [WonderHowTo](http://img.wonderhowto.com/img/66/40/63513197432817/0/hack­wi­fi­cracking­wpa2­psk­passwords­using­aircrack­ng.w654.jpg)
 
 After deauthenticating the client, the client will automatically try to reauthenticate itself. During this time, we will capture the handshake between the client and the AP. Running `airodump-­ng` during the process of deauthenticating the client will automatically catch the WPA handshake (and write it to a file if ran as described previously). 
 
 Once the WPA handshake has been captured, we can try to bruteforce the password with Aircrack­-ng using the command `aircrack­-ng WPAhandshakeFile.cap ­-w /path/to/wordlist`, where the `.cap` file is the file written to by airodump-­ng and the wordlist is a list of words in a file that could be possible passwords. This method of cracking can be a relatively slow and tedious process, taking up days or longer if the AP’s password is very secure. On the other hand, it can take seconds on powerful hardware with a weak to medium strength password. See an example of this password cracking process below: 
 
-![Cracking WPA2-PSK key with a wordlist]({{ site.baseurl }}/assets/images/wifi-hacking/wpa2-crack.jpg)
+![Cracking WPA2-PSK key with a wordlist]({{ site.baseurl }}/assets/images/blog/wifi-hacking/wpa2-crack.jpg)
 > Image Credit: [WonderHowTo](https://i.wonderhowto.com/img/18/70/63513197730544/0/hackwificrackingwpa2pskpasswordsusingaircrackng.w654.jpg)
 
 ## Conclusions

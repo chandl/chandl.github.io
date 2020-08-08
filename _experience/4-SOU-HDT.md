@@ -1,7 +1,7 @@
 ---
 position: Help Desk Technician
 company: Southern Oregon University
-image: "assets/images/SOU.jpg"
+image: "assets/images/logos/SOU.jpg"
 dates: "Oct 2014 - Jan 2016"
 layout: null
 ---

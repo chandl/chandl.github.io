@@ -1,7 +1,7 @@
 ---
 position: Software Engineer
 company: Shasta Networks
-image: "assets/images/Shasta.png"
+image: "assets/images/logos/Shasta.png"
 dates: "Oct 2018 - Aug 2019"
 layout: null
 ---

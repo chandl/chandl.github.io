@@ -3,7 +3,7 @@ layout: post
 title:  "What is the Real Time Streaming Protocol?"
 date:   2018-03-28 00:00:00 -0700
 categories: papers
-image: "/assets/images/rtsp/rtsp-streaming-netflix.jpg"
+image: "/assets/images/blog/rtsp/rtsp-streaming-netflix.jpg"
 description: "An analysis of the Real Time Streaming Protocol (RTSP). A term paper for my Networks 2 class."
 author: Chandler Severson
 ---
@@ -51,20 +51,20 @@ Since not all media servers have the same functionality, some media servers will
 #### DESCRIBE
 The DESCRIBE directive retrieves the session/presentation description or media object that is identified by the request URL from a server. The DESCRIBE reply-response pair constitutes the initialization phase of RTSP, effectively the first step in setting up the stream. The client may use the Accept header to specify description formats that they understand and the server responds with a description of the requested resource (Schulzrinne, Rao, & Lanphier, 1998, n.p.). The description will often come via a SDP (Session Description Protocol) description wrapped in RTSP. See the figure below, a RTSP DESCRIBE request-response pair.
 
-![RTSP DESCRIBE Request]({{ site.baseurl }}/assets/images/rtsp/rtsp-describe-request.jpg "RTSP DESCRIBE Request")
+![RTSP DESCRIBE Request]({{ site.baseurl }}/assets/images/blog/rtsp/rtsp-describe-request.jpg "RTSP DESCRIBE Request")
 >DESCRIBE request-response pair.
 
 #### SETUP
 The SETUP directive specifies the transport mechanism to be used for the streamed media. A client can issue a SETUP request while the stream is already playing to change transport parameters, which a server might allow. This directive finalizes setup of the stream and is often the last one called before the PLAY directive. RTSP SETUP data is often used by firewalls and other intermediate network devices to configure internal settings based on the transport mechanism specified. The Transport header from the client specifies the acceptable transport methods of the client, and the response will contain the transport parameters selected by the server (Schulzrinne, Rao, & Lanphier, 1998, n.p.). See the figure below, a RTSP SETUP request-response pair.
 
-![RTSP SETUP Request]({{ site.baseurl }}/assets/images/rtsp/rtsp-setup-request.jpg "RTSP SETUP Request")
+![RTSP SETUP Request]({{ site.baseurl }}/assets/images/blog/rtsp/rtsp-setup-request.jpg "RTSP SETUP Request")
 >SETUP request-response pair.
 
 ### Media Control Directives
 #### PLAY
 The PLAY directive tells the server to start sending data via the transport protocol specified in the SETUP response. PLAY requests cannot be issued while any SETUP request is outstanding (i.e. not acknowledged as successful). PLAY requests are queued on the server and are executed in order. In the PLAY request, a Range is specified, that is when the media should start and stop playing (Schulzrinne, Rao, & Lanphier, 1998, n.p.). This parameter is not always required, and if not found, the media will play directly from start to end, and in the case of live streams, start from the most recent time. See the figure below, a RTSP PLAY request-response pair.
 
-![RTSP PLAY Request]({{ site.baseurl }}/assets/images/rtsp/rtsp-play-request.jpg "RTSP PLAY Request")
+![RTSP PLAY Request]({{ site.baseurl }}/assets/images/blog/rtsp/rtsp-play-request.jpg "RTSP PLAY Request")
 >PLAY request-response pair.
 
 #### PAUSE
@@ -72,13 +72,13 @@ The PAUSE directive is another essential method used to control the media stream
 
 Similar to the PLAY directive, PAUSE requests can contain a Range header specifying the “pause point”. This Range must contain exactly one value rather than a time range. The normal play time for the stream is set to the pause point and is continued at this point when a PLAY request is received. See the figure below, a PAUSE directive request-response pair.
 
-![RTSP PAUSE Request]({{ site.baseurl }}/assets/images/rtsp/rtsp-pause-request.jpg "RTSP PAUSE Request")
+![RTSP PAUSE Request]({{ site.baseurl }}/assets/images/blog/rtsp/rtsp-pause-request.jpg "RTSP PAUSE Request")
 >PAUSE request-response pair.
 
 #### TEARDOWN
 The TEARDOWN directive is the last major directive in the RTSP protocol. The TEARDOWN directive is used to stop the stream delivery. Specifically, it stops the stream delivery for the given URI, freeing the resources on the server associated with it. In the request body, the Session that was assigned upon calling SETUP is supplied; causing the server to invalidate the session. Unless all transport parameters are defined by the session description, a new SETUP request has to be issued before the session can be played again (Schulzrinne, Rao, & Lanphier, 1998, n.p.). See the figure below, a TEARDOWN directive request. The response is not included, as it is just an acknowledgement.
 
-![RTSP TEARDOWN Request]({{ site.baseurl }}/assets/images/rtsp/rtsp-teardown-request.jpg "RTSP TEARDOWN Request")
+![RTSP TEARDOWN Request]({{ site.baseurl }}/assets/images/blog/rtsp/rtsp-teardown-request.jpg "RTSP TEARDOWN Request")
 >TEARDOWN request-response pair.
 
 ### Other Directives

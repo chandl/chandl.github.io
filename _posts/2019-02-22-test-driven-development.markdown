@@ -3,11 +3,11 @@ layout: post
 title:  "What is Test Driven Development?"
 date:   2019-02-22 00:00:00 -0700
 categories: papers
-image: "/assets/images/tdd/tdd-header.jpg"
+image: "/assets/images/blog/tdd/tdd-header.jpg"
 description: "A paper and slide deck on Test Driven Development. A term project for Systems Analysis."
 author: Chandler Severson
 ---
-*Note: This article was adapted from a paper that I wrote in my undergrad Systems Analysis class at Southern Oregon University. The original paper can be found [here](https://drive.google.com/file/d/1-bmzehi-CdN40cT1pVnz-gVfP_uaf8Pa/view) and the accompanying presentation can be viewed [here]({{ site.baseurl }}/assets/images/tdd/tdd-slides.pdf)*.
+*Note: This article was adapted from a paper that I wrote in my undergrad Systems Analysis class at Southern Oregon University. The original paper can be found [here](https://drive.google.com/file/d/1-bmzehi-CdN40cT1pVnz-gVfP_uaf8Pa/view) and the accompanying presentation can be viewed [here]({{ site.baseurl }}/assets/images/blog/tdd/tdd-slides.pdf)*.
 
 
 ## Why Test Software?
@@ -32,7 +32,7 @@ The main building block of the test driven development process is called Test Fi
 
 After the new test successfully fails, the developer needs to actually implement the required functionality. During this step of the process, the developer will implement the functional code with the goal of getting the newly-made test to pass in all cases. After the developer has created the functional code, the final step of the process is to run the new test again to make sure the new functional code is working as intended. If the tests fail in this stage, the developer will need to rework the functional code to make it pass. Once the tests pass, the next step is to iteratively start over on the next requirement.
 
-![Figure One - The Test First Development (TFD) Process]({{ site.baseurl }}/assets/images/tdd/fig1.jpg "Figure One - The Test First Development (TFD) Process")
+![Figure One - The Test First Development (TFD) Process]({{ site.baseurl }}/assets/images/blog/tdd/fig1.jpg "Figure One - The Test First Development (TFD) Process")
 > Figure One - The Test First Development (TFD) Process
 
 ### The Test Driven Development Process
@@ -46,7 +46,7 @@ There are two main types of test driven development that are often put into plac
 
 See Figure 2 for a UML diagram showing how the Developer and Acceptance TDD processes work together. In an ideal situation, a developer will write a single acceptance test to describe a user story/use case and then they will take a developer TDD approach to implementing the functionality needed to satisfy the acceptance test. Developing this way will often require multiple iterations of the developer TDD process to get an acceptance test to pass. That means many unit tests are needed for one acceptance test.
 
-![Figure Two - Acceptance TDD and Developer TDD Interaction]({{ site.baseurl }}/assets/images/tdd/fig2.jpg "Figure Two - Acceptance TDD and Developer TDD Interaction")
+![Figure Two - Acceptance TDD and Developer TDD Interaction]({{ site.baseurl }}/assets/images/blog/tdd/fig2.jpg "Figure Two - Acceptance TDD and Developer TDD Interaction")
 > Figure Two - Acceptance TDD and Developer TDD Interaction
 
 ## Benefits and Common Pitfalls

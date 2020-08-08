@@ -1,7 +1,7 @@
 ---
 position: Integration Engineer
 company: Shasta Networks
-image: "assets/images/Shasta.png"
+image: "assets/images/logos/Shasta.png"
 dates: "Jun 2016 - Oct 2018"
 layout: null
 ---

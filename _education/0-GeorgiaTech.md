@@ -2,7 +2,7 @@
 name: Georgia Institute of Technology
 degree: Studying Computer Science
 dates: "Jan 2020 - Present"
-image: "assets/images/GATECH.png"
+image: "assets/images/logos/GATECH.png"
 layout: null
 ---
 <p>

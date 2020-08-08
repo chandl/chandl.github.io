@@ -1,7 +1,7 @@
 ---
 position: Contract Software Engineer
 company: Nike
-image: "assets/images/Nike.png"
+image: "assets/images/logos/Nike.png"
 dates: "Sep 2019 - Present"
 layout: null
 ---

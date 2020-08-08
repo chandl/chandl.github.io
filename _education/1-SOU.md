@@ -2,7 +2,7 @@
 name: Southern Oregon University
 degree: B.S. Computer Science
 dates: "Oct 2014 - Jun 2017"
-image: "assets/images/SOU-Long.png"
+image: "assets/images/logos/SOU-Long.png"
 layout: null
 ---
 <p>
