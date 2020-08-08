@@ -7,9 +7,6 @@ image: "/assets/images/rtsp/rtsp-streaming-netflix.jpg"
 description: "An analysis of the Real Time Streaming Protocol (RTSP). A term paper for my Networks 2 class."
 author: Chandler Severson
 ---
-
-![The Real Time Streaming Protocol]({{ site.baseurl }}/assets/images/rtsp/rtsp-streaming-netflix.jpg "The Real Time Streaming Protocol")
-
 Have you ever been watching a video online and wondered how all of the components work together? More specifically, have you wondered how the player knows when you stopped or paused the video or how the video gets set up in the background? While different websites and platforms use a range of streaming protocols to assist with this functionality, one of the first and most influential is RTSP, or the Real Time Streaming Protocol.
 
 ## Overview

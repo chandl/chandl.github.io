@@ -2123,8 +2123,13 @@ li .fa {
   color: #0bceaf;
 }
 
+.mh-blog .mh-blog-item .blog-inner img {
+  color: #0bceaf;
+}
+
 .mh-blog .mh-blog-item img {
-  margin-bottom: 30px;
+  max-width:100%;
+  max-height:100%;
 }
 
 .mh-blog .mh-blog-item h2 {

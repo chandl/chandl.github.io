@@ -7,9 +7,6 @@ image: "/assets/images/tdd/tdd-header.jpg"
 description: "A paper and slide deck on Test Driven Development. A term project for Systems Analysis."
 author: Chandler Severson
 ---
-
-![Test Driven Development]({{ site.baseurl }}/assets/images/tdd/tdd-header.jpg "Free WiFi Can Be Dangerous")
-
 *Note: This article was adapted from a paper that I wrote in my undergrad Systems Analysis class at Southern Oregon University. The original paper can be found [here](https://drive.google.com/file/d/1-bmzehi-CdN40cT1pVnz-gVfP_uaf8Pa/view) and the accompanying presentation can be viewed [here]({{ site.baseurl }}/assets/images/tdd/tdd-slides.pdf)*.
 
 

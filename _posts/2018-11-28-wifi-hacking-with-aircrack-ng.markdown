@@ -7,9 +7,6 @@ image: "/assets/images/wifi-hacking/wifi-header.jpg"
 description: "An article detailing how to install and use the WiFi hacking tool Aircrack-ng, along with its other components."
 author: Chandler Severson
 ---
-
-![Free Wifi]({{ site.baseurl }}/assets/images/wifi-hacking/wifi-header.jpg "Free WiFi Can Be Dangerous")
-
 *Note: This article was adapted from a project paper that I wrote in my undergrad Security class at Southern Oregon University. The original paper can be found [here](https://drive.google.com/file/d/0B0SXbsskP_j8RVJqb3BuMm9EYm8/view).*
 
 
