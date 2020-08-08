@@ -11,7 +11,8 @@
                         <div class="mh-work-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.4s">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <div class="work-img shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+                                    <div class="work-img shadow-2 wow fadeInUp" data-wow-duration="0.8s"
+                                        data-wow-delay="0.2s">
                                         <img src={{ exp.image }} alt="" class="img-fluid">
                                     </div>
                                 </div>
@@ -20,7 +21,7 @@
                                     <div class="mh-eduyear">{{ exp.dates }}</div>
                                     {{ exp.content }}
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                         {% endfor %}
                     </div>
@@ -30,62 +31,30 @@
             <div class="row section-separator">
                 <div class="mh-education">
                     <div class="col-sm-12 col-md-12">
-                    <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Education</h3>
-                    <div class="mh-education-deatils">
-                        <!-- Education Institutes-->
-                        <div class="mh-education-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
-                        <div class="row d-flex flex-wrap align-items-center">
-                            <div class="col-sm-2">
-                                <div class="shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <img src="assets/images/GATECH.png" alt="" class="img-fluid">
+                        <h3 class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">Education</h3>
+                        <div class="mh-education-deatils">
+                            {% for school in site.education %}
+                            <div class="mh-education-item dark-bg wow fadeInUp" data-wow-duration="0.8s"
+                                data-wow-delay="0.3s">
+                                <div class="row d-flex flex-wrap align-items-center">
+                                    <div class="col-sm-2">
+                                        <div class="shadow-2 wow fadeInUp" data-wow-duration="0.8s"
+                                            data-wow-delay="0.2s">
+                                            <img src={{ school.image }} alt="" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <h4>{{ school.degree }} at <a href="">{{ school.name }}</a></h4>
+                                        <div class="mh-eduyear">{{ school.dates }}</div>
+                                        {{ school.content }}
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-10">
-                                <h4>Studying Computer Science at <a href="">Georgia Institute of Technology</a></h4>
-                                <div class="mh-eduyear">Jan 2020 - Present</div>
-                                <p>
-                                    Enrolled in the Online MS of Computer Science (OMSCS) Program. <br/>
-                                    Started Spring 2020 and completed coursework in Knowledge Based AI and AI For Robotics.
-                                </p>
-
-                            </div>
+                            {% endfor %}
                         </div>
-
-                        </div>                                
-                        <!-- Education Institutes-->
-                        <div class="mh-education-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.5s">
-                        <div class="row d-flex flex-wrap align-items-center">
-                            <div class="col-sm-2">
-                                <div class="shadow-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
-                                    <img src="assets/images/SOU-Long.png" alt="" class="img-fluid">
-                                </div>
-                            </div>
-                            <div class="col-sm-10">
-                                <h4>B.S. Computer Science at <a href="">Southern Oregon University</a></h4>
-                                <div class="mh-eduyear">Oct 2014 - Jun 2017</div>
-                                <p>
-                                    I received my Bachelor of Science degree and Business Administration Minor from Southern Oregon University, graduating Magna Cum Laude with a 3.76 GPA. 
-                                </p>
-                                <br/>
-                                <p>
-                                    <b>President's List</b>: Winter 2016, Spring 2016, Spring 2017
-                                    <br/>
-                                    <b>Dean's List</b>: Fall 2014, Fall 2015
-                                    <br/>
-                                    <b>Provost's List</b>: Fall 2016, Winter 2017
-                                    <br/>
-                                </p>
-
-
-                            </div>
-                            </div>
-
-                        </div>                                
-                    </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </section>

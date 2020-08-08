@@ -9,3 +9,4 @@ show_excerpts: true # set to true to show excerpts on the homepage
 resume_url: "https://drive.google.com/file/d/1R4TYUs-TFfwRkajIDn85tiloUQQDyH50/view?usp=sharing"
 collections:
   - experience
+  - education
