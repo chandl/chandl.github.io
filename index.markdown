@@ -1,6 +1,6 @@
 ---
 title: Chandler Severson - Software Engineer
-layout: index
+layout: home
 ---
 
 {{ content }}
