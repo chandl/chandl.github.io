@@ -1426,6 +1426,11 @@ li .fa {
   padding: 180px 0;
 }
 
+.navbar-brand img {
+  max-width:40%;
+  height: auto;
+}
+
 /*
     ==============
        Navigation
