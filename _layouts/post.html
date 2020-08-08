@@ -2,7 +2,7 @@
 title: Post
 layout: default
 ---
-    
+
 <!--
 ===================
     ABOUT 
@@ -34,24 +34,28 @@ layout: default
                     </div>
                     <div class="col-sm-12 ">
                         <div class="row mh-related-post">
+                            {% if page.previous.url %}
                             <div class="mh-blog-next-prev-post col-md-6 text-left">
-                                <a href=""><i class="fa fa-angle-left"></i> Lorem Ipsum Dolor</a>
-                            </div>                                
+                                <a href="{{page.previous.url}}"><i class="fa fa-angle-left"></i> {{page.previous.title}}</a>
+                            </div>    
+                            {% else %}
+                            <div class="col-md-6"></div>
+                            {% endif %}
+                            
+                            {% if page.next.url %}
                             <div class="mh-blog-next-prev-post col-md-6 text-right">
-                                <a href="">Lorem Ipsum Dolor <i class="fa fa-angle-right"></i></a>
+                                <a href="{{page.next.url}}">{{page.next.title}} <i class="fa fa-angle-right"></i></a>
                             </div>
+                            {% endif %}
                         </div>
                     </div>
                     
                 </div>
             </div>
-            
-            
             {% include post/sidebar.html %}
-            
         </div>
     </div>
-</section>       
+</section>
 
 
 

@@ -2111,8 +2111,7 @@ li .fa {
 }
 
 .mh-blog .mh-blog-item .blog-inner {
-  padding: 0px 20px;
-  padding-bottom: 30px;
+  padding: 30px 20px;
 }
 
 .mh-blog .mh-blog-item .blog-inner h2 a {
@@ -2422,6 +2421,7 @@ li .fa {
 */
 .mh-page-title {
   padding-top: 100px;
+  font-family: "Lucida Console", Courier, monospace;
 }
 
 .mh-page-title h2 {
