@@ -9,6 +9,9 @@
                     <div class="mh-single-project-slide-by-side row">
 
                         {% for project in site.categories.projects %}
+                        {% if project.featured == false %}
+                            {% continue %}
+                        {% endif %}
                         <div class="col-sm-12 mh-featured-item">
                             <div class="row">
                                 <div class="col-sm-7">
@@ -27,7 +30,6 @@
                                 </div>
                             </div>
                         </div>
-
                         {% endfor %}
                     </div>
                 </div>

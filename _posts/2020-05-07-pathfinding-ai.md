@@ -1,10 +1,11 @@
 ---
 layout: post
 title:  "Creating a Pathfinding AI with A* Search"
-date:   2020-08-07 00:00:00 -0700
+date:   2020-05-07 00:00:00 -0700
 categories: projects
 author: Chandler Severson
 
+featured: true
 type: Artificial Intelligence
 name: Creating a Pathfinding AI
 subtitle: Pathfinding with the A-Star Search Algorithm
