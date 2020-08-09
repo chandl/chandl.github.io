@@ -8,6 +8,6 @@ author: Chandler Severson
 type: Artificial Intelligence
 name: Creating a Gomoku-Playing AI
 subtitle: Beating the classic game of Go, with an AI
-image: "https://via.placeholder.com/350x350"
+image: "/assets/images/blog/gomoku-ai/gomoku.png"
 description: "A Gomoku-Playing AI. Using Minimax search with Alpha-Beta pruning."
 ---

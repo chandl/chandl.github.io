@@ -8,6 +8,6 @@ author: Chandler Severson
 type: Application Development
 name: Creating a Minecraft Minigame Plugin
 subtitle: A modular minigame plugin for minecraft.
-image: "https://via.placeholder.com/350x350"
+image: "/assets/images/blog/mc-minigame-plugin/minecraft.jpg"
 description: "Creating a modular minigame plugin for Minecraft."
 ---

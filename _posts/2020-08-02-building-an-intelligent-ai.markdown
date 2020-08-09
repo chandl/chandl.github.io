@@ -8,6 +8,6 @@ author: Chandler Severson
 type: Artificial Intelligence
 name: Creating an AI to Solve Intelligence Tests
 subtitle: Solving Raven's Progressive Matrices
-image: "https://via.placeholder.com/350x350"
+image: "/assets/images/blog/ai-intelligence-test/RPM.png"
 description: "Can an AI solve an abstract reasoning test designed to test non-verbal intelligence? Well... mine can! Check out my process of implementing an AI to solve the Raven's Progressive Matrices for my Knowledge Based AI class."
 ---

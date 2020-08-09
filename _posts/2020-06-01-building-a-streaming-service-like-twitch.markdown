@@ -8,6 +8,6 @@ author: Chandler Severson
 type: Application Development
 name: Building a Streaming Service like Twitch.tv
 subtitle: ZAStream - Senior Capstone
-image: "https://via.placeholder.com/350x350"
+image: "/assets/images/blog/zastream/twitch.jpg"
 description: "ZAStream was my Senior Year Capstone project in Computer Science. It is a live video streaming website similar to Twitch.tv, Facebook Live, Ustream.tv, etc... Development of this project helped reinforce the concepts of Waterfall and Agile development, software planning and requirement gathering, testing, web development, and MVC principles, among many other things."
 ---

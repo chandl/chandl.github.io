@@ -8,6 +8,6 @@ author: Chandler Severson
 name: "Creating a Self-Driving Robot AI"
 type: "Artificial Intelligence"
 subtitle: "With a Variety of Algorithms"
-image: "https://via.placeholder.com/350x350"
+image: "/assets/images/blog/self-driving-ai/car.jpg"
 description: "TBD"
 ---
