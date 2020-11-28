@@ -7,7 +7,7 @@ layout: null
 ---
 
 <p>
-    I worked at Nike as Contract Software Engineer, employed through Randstad Technologies US. I worked on a cloud-native backend team and built web services that powered mobile point of sale and self checkout kiosks in Nike retail stores.
+    I worked at Nike as Contract Software Engineer, employed through Randstad Technologies US. I was on a cloud-native backend team and built web services that powered mobile point of sale devices and self checkout kiosks in Nike retail stores.
 </p>
 <p>
     Technologies: Java 8-11, Node.js, AWS (Lambda and EC2), Jenkins CI/CD, and Docker. Automated functional tests, unit tests, and a full e2e integration test suite using test driven + behavior driven development.
