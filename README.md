@@ -16,4 +16,4 @@ The template used in this project can be purchased at [Themeforest](https://them
 
 Jekyll adaptation implemented by myself.
 
-If you would like to chat, you can find me on [LinkedIn](https://linkedin.com/in/chandler-severson) or reach out by email at me@cseverson.com
+If you would like to chat, you can find me on [LinkedIn](https://linkedin.com/in/chandler-severson) or reach out by email at me@chandl.io
