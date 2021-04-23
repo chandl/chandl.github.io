@@ -7,5 +7,5 @@ layout: null
 ---
 
 <p>
-    I recently started working at Oracle on a core service team within Oracle Cloud Infrastructure, helping to expand Oracle's cloud to many new regions!
+    I am currently a Senior Software Engineer at Oracle Cloud Infrastructure in the developer tools organization. I am on a team that builds a cloud-scale internal database system that is the backbone for most services' control planes within the company.
 </p>
