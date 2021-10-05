@@ -11,7 +11,7 @@ layout: null
 </p>
 
 <p>
-    The Team that I Work on Builds: 
+    <b>The team that I work on builds:</b>
     <ul class="work-responsibility">
     <li><i class="fa fa-circle"></i>A tier-zero, critical database service built in every single OCI region (30+).</li>
     <li><i class="fa fa-circle"></i>A multi-tenant, distributed, transactional NoSQL database.</li>
