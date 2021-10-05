@@ -1,13 +1,13 @@
 <section class="mh-blog" id="mh-blog">
     <div class="container">
         <div class="row section-separator">
-            <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.2s">
+            <div class="col-sm-12 section-title wow fadeInUp" data-wow-duration="0.3s" data-wow-delay="0.2s">
                 <h3>Featured Posts</h3>
             </div>
 
             {% for post in site.categories.papers %}
             <div class="col-sm-12 col-md-4">
-                <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="0.3s">
+                <div class="mh-blog-item dark-bg wow fadeInUp" data-wow-duration="0.3s" data-wow-delay="0.1s">
                 <img src={{ post.image }} alt="" class="img-fluid">
                 <div class="blog-inner">
                     <h2><a href={{ post.url }}>{{ post.title }}</a></h2>
