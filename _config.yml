@@ -61,3 +61,14 @@ resume_theme:                   default
 # Note: when editing locally, remember to restart
 # your Jekyll server when you edit this file. Changes
 # to _config.yml are only recognized when the server starts
+
+redirect_slugs: ["/ravens-progressive-matrices-ai", 
+"/real-time-streaming-protocol", 
+"/wifi-hacking-with-aircrack-ng", 
+"/test-driven-development",
+"/healthcare-data-visualization", 
+"/jellyfin-with-docker-compose", 
+"/install-docker-on-oracle-linux"]
+
+plugins:
+  - jekyll-redirect-from
