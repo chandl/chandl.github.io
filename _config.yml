@@ -1,17 +1,63 @@
-title: Chandler Severson's Portfolio
-email: me@chandl.io
-description: >- # this means to ignore newlines until "baseurl:"
-  Write-ups for some of my most interesting software projects.
-baseurl: ""
-url: "https://chandl.io" # the base hostname & protocol for your site, e.g. http://example.com
-author: Chandler Severson
-show_excerpts: true # set to true to show excerpts on the homepage
-resume_url: "https://drive.google.com/file/d/1R4TYUs-TFfwRkajIDn85tiloUQQDyH50/view?usp=sharing"
-collections:
-  - experience
-  - education
+# Site settings
+title: "Chandler Severson's Portfolio"
+description: "Chandler Severson - Software Engineer Portfolio"
 
-social_links:
-  linkedin: "https://www.linkedin.com/in/chandler-severson/"
-  github: "https://github.com/chandl"
-  stackoverflow: "https://stackoverflow.com/users/6321578/chandler"
+# Build settings
+markdown: kramdown
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Resume settings
+resume_avatar:                  "true"
+resume_name:                    "Chandler Severson"
+resume_title:                   "Senior Software Engineer"
+
+# used for the contact button in _layouts/resume.html
+resume_contact_email:           "me@chandl.io"
+
+# the next two items are used for schema itemprops in _layouts/resume.html
+resume_contact_telephone:       ""
+resume_contact_address:         "Portland, OR Area"
+
+resume_header_contact_info:     "742 Evergreen Terrace, Springfield • 555-7334 • lisasimpson@youremailaddress.com"
+display_header_contact_info:    "false"
+
+resume_header_intro: "<p>I am a Senior Software Engineer with 6 years’ industry experience building distributed backend systems. I specialize in Java and have professional experience in Javascript and Python. Passionate about building and operating complex, performant distributed systems.</p>"
+
+# use "yes" to display the email contact button,
+# "no" to display an "I'm not looking for work" message,
+# or remove the resume_looking_for_work option entirely
+# to leave blank
+#resume_looking_for_work:        "no"
+
+# Decide which sections to use
+# comment out to hide
+resume_section_experience:      true
+resume_section_education:       true
+resume_section_projects:        false
+resume_section_skills:          false
+resume_section_recognition:     false
+resume_section_links:           false
+resume_section_associations:    false
+resume_section_interests:       false
+
+# Resume social links
+# uncomment the options you wish to display, and add your own URL
+resume_social_links:
+  resume_github_url:            "https://github.com/chandl"
+  #resume_twitter_url:           "http://twitter.com/"
+  #resume_dribbble_url:          "https://dribbble.com/"
+  # resume_facebook_url:          "insert Facebook URL here"
+  resume_linkedin_url:          "https://linkedin.com/in/chandler-severson/"
+  # resume_instagram_url:         "insert your Instagram URL here"
+  resume_website_url:           "https://chandl.io"
+  #resume_medium_url:            "https://medium.com/"
+resume_print_social_links:      true
+
+# Design settings
+resume_theme:                   default
+
+# Note: when editing locally, remember to restart
+# your Jekyll server when you edit this file. Changes
+# to _config.yml are only recognized when the server starts

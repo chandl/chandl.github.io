@@ -1,0 +1,41 @@
+# Jobs
+
+# Oracle
+# Senior Software Engineer
+- company: Oracle
+  position: Senior Software Engineer
+  duration: Nov, 2020 &mdash; Present
+  summary: 'I am currently a Senior Software Engineer at Oracle Cloud Infrastructure. I am on a team that builds a cloud-scale NoSQL database system which handles 1M+ request/sec globally. The product I work on is utilized by nearly all teams within Oracle Cloud as the backing database for service control planes.
+
+<br/><br/>
+<b>Technologies</b>: Java 8-11, Python, Dropwizard, Guice, Oracle Cloud Infrastructure, Oracle Datbase + Autonomous Database, custom CI/CD, docker. Automated functional tests, unit tests, a full e2e integration test suite using test driven development and canaries.'
+
+# Nike
+# Software Engineer, Contract
+- company: Nike
+  position: Software Engineer, Contract
+  duration: Sept, 2019 &mdash; Nov, 2020
+  summary: 'Developer on a cloud-native backend team; built web services that powered mobile point of sale devices and self checkout kiosks in Nike retail stores. Contract Software Engineer employed through Randstad Technologies US.
+  <br/><br/>
+  <b>Technologies</b>: Java 8-11, Node.js, AWS (Lambda and EC2), Jenkins CI/CD, and Docker. Automated functional tests, unit tests, and a full e2e integration test suite using test driven + behavior driven development.'
+
+# Shasta Networks
+- company: Shasta Networks
+  position: Software Engineer
+  duration: Oct, 2018 &mdash; Aug, 2019
+  summary: 'Developer and technical lead on multiple projects. Lead developer on project to create automated validation tool for HL7/FHIR (healthcare) data to streamline integration. Lead developer on project to create dashboards/visualizations on healthcare data for healthcare execs to make informed, data-driven decisions.
+  <br/><br/>
+  <b>Technologies</b>: Java, Bash, Technical Writing, Site Reliability Engineering, AWS, Unix Administration'
+
+- company: Shasta Networks
+  position: Integration Engineer
+  duration:  Jun, 2016 &mdash; Oct, 2018
+  summary: 'Developer and SRE role, where I helped lead the implementation of hundreds of java-based HL7 interfaces. Acted as the main technical liaison between a large client, providing direct software support for creating, updating, and troubleshooting over 400 interfaces between a variety of source and destination health information systems, interface engines, and billing systems.
+  <br/><br/>
+  <b>Technologies</b>: Java, Bash, Technical Writing, Site Reliability Engineering, AWS, Unix Administration'
+
+# SOU
+- company: Southern Oregon University
+  position: (Senior) Help Desk Technician
+  duration: Oct, 2014 &mdash; Jun, 2016
+  summary: 'Frontline help desk role, I helped with technology-related questions from students and staff. I troubleshot, diagnosed, and resolved problems relating to user accounts, the general operation of personal computers, and specific issues regarding programs and personal devices. As a Senior Technician, I helped mentor others and provide higher-level support for complicated issues.'
