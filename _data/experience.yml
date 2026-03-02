@@ -1,67 +1,59 @@
-# Experience (from LinkedIn export)
+# Experience — Staff-level emphasis: impact, scale, leadership
 
 # Oracle Health
 - company: Oracle
   position: Principal Software Engineer, Oracle Health
   duration: Dec, 2025 &mdash; Present
-  summary: 'Principal engineer on the next-generation Oracle Health Patient Portal. Washington, United States.'
+  summary: 'Lead engineer on the next-generation Oracle Health Patient Portal. Washington.'
 
 # OCI AI Infrastructure
 - company: Oracle
   position: Principal Software Engineer, OCI AI Infrastructure
   duration: Sep, 2023 &mdash; Dec, 2025
-  summary: 'Founding Principal/Staff engineer on a team building a data center management system for one of the world''s largest AI training/inference facilities. Washington, United States.
-  <br/><br/><b>Key achievements</b>:
+  summary: 'Founding Staff engineer for a data center management system powering one of the world''s largest AI training/inference facilities. Set technical direction for an org that grew to hundreds of engineers.
   <ul class="resume-item-list">
-  <li>Founding member; onboarded 20+ engineers and set technical direction for the org (now hundreds of engineers).</li>
-  <li>Team lead for asset management (inventory) with 10+ engineers; drove inventory system from 0 to 1 and served as SME for post go-live support.</li>
-  <li>Built and owned Rack Handover tooling to validate readiness and hand over GPU/Compute racks to customers; validated &gt;$1B of hardware before handover.</li>
-  <li>Conducted 70+ interviews for Senior/Principal engineers.</li>
-  <li>Built scrumhost.app for sprint planning and backlog refinement.</li>
+  <li>Led asset management (inventory) team of 10+; shipped system 0→1 and served as SME for post go-live.</li>
+  <li>Owned Rack Handover tooling; validated &gt;$1B of GPU/Compute hardware before customer handover.</li>
+  <li>Onboarded 20+ engineers; conducted 70+ Senior/Principal interviews; built scrumhost.app for sprint planning.</li>
   </ul>'
 
 # OCI Control Plane Platform
 - company: Oracle
   position: Senior Software Engineer, OCI Control Plane Platform
   duration: Nov, 2020 &mdash; Sep, 2023
-  summary: 'Senior engineer on an Oracle Cloud Tier-0 team building and maintaining an internal NoSQL database: 1M+ req/s across 40+ regions, used by hundreds of OCI teams for control-plane metadata. Portland, Oregon.
-  <br/><br/><b>Key achievements</b>:
+  summary: 'Tier-0 NoSQL database: 1M+ req/s, 40+ regions, hundreds of internal OCI teams. Portland.
   <ul class="resume-item-list">
-  <li>Wrote ECAR design doc on database migration; named one of three best architecture documents of FY24 across OCI; now used as an example for future designs.</li>
-  <li>Designed and implemented client-side service discovery used by hundreds of internal teams to migrate databases seamlessly.</li>
-  <li>Built on-call shadowing program from the ground up; mentored 20+ engineers through onboarding.</li>
-  <li>Project lead for multiple sub-teams (5–10 people); modernized internal developer tooling (1M+ internal downloads).</li>
-  <li>Designed password rotation for disconnected National Security regions—30k database passwords, zero downtime, no direct environment access.</li>
-  <li>FY23 on-call: resolved nearly 700 SEV-2/SEV-3 incidents; improved multitenant connection library performance by 200%.</li>
+  <li>Authored ECAR migration design; named one of three best architecture docs in OCI FY24; used as org-wide template.</li>
+  <li>Designed client-side service discovery adopted by hundreds of teams for zero-downtime DB migration.</li>
+  <li>Led on-call shadowing and onboarding (20+ engineers); project lead for sub-teams of 5–10.</li>
+  <li>Designed password rotation for disconnected National Security regions (30k DBs, zero downtime, no direct access).</li>
+  <li>FY23: ~700 SEV-2/3 resolved; 200% improvement in multitenant connection library; 1M+ internal tool downloads.</li>
   </ul>'
 
 # Nike
 - company: Nike
   position: Software Engineer (ETW)
   duration: Sept, 2019 &mdash; Nov, 2020
-  summary: 'Cloud-native backend developer building AWS microservices for Nike retail (point of sale, self-checkout). DevOps rotation: owned scalability, resilience, and availability. Beaverton, Oregon.'
+  summary: 'Built AWS microservices for Nike retail (point of sale, self-checkout). DevOps rotation: owned scalability, resilience, and availability. Beaverton.'
 
 # Shasta Networks - Software Engineer
 - company: Shasta Networks
   position: Software Engineer
   duration: Oct, 2018 &mdash; Aug, 2019
-  summary: 'Ashland, Oregon.
-  <br/><br/><b>Key achievements</b>:
+  summary: 'Ashland.
   <ul class="resume-item-list">
-  <li>Technical lead: inline HL7/FHIR conformance and validation tool for healthcare data.</li>
-  <li>Technical lead: compiled patient data from multiple sources into clinical charts for a large medical billing company.</li>
-  <li>Led infrastructure migration planning; proposed hybrid microservice architecture; introduced AWS.</li>
-  <li>Mentored junior engineers and interns; co-designed and ran 2019 Shasta Networks Hackathon.</li>
+  <li>Technical lead: HL7/FHIR conformance and validation tool; clinical charts from multi-source patient data for large billing client.</li>
+  <li>Led infrastructure migration; proposed hybrid microservice architecture; introduced AWS; mentored juniors and interns.</li>
   </ul>'
 
 # Shasta Networks - Integration Engineer
 - company: Shasta Networks
   position: Integration Engineer
   duration: Jun, 2016 &mdash; Oct, 2018
-  summary: 'Ashland, Oregon. Project lead for hundreds of Java-based HL7 routes from startup to production. Technical liaison for a large client: created, updated, and troubleshooted 400+ interfaces across health information systems, interface engines, and billing. Managed-service support for a Java integration engine; documented work and built knowledge-base content for new features and processes.'
+  summary: 'Project lead for hundreds of Java HL7 routes; technical liaison for 400+ interfaces across EHRs, interface engines, and billing. Ashland.'
 
 # Southern Oregon University
 - company: Southern Oregon University
   position: Senior Help Desk Technician
   duration: Oct, 2014 &mdash; Jun, 2016
-  summary: 'Help desk technician; promoted to Senior. Mentored peers and provided escalation support for students and staff. Ashland, Oregon.'
+  summary: 'Promoted to Senior; mentored peers and provided escalation support. Ashland.'

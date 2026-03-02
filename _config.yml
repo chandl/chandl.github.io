@@ -23,7 +23,7 @@ resume_contact_address:         ""
 resume_header_contact_info:     "Vancouver, WA • me@chandl.io"
 display_header_contact_info:    "true"
 
-resume_header_intro: "<p>Principal (Staff) Software Engineer building and maintaining distributed backend systems. Currently at Oracle Health on the next-generation patient portal. Previously: OCI AI Infrastructure (data center and GPU/compute inventory at scale), OCI control-plane database (1M+ req/s, 40+ regions), Nike (cloud-native point-of-sale), and healthcare integration (HL7/FHIR, 400+ interfaces).</p>"
+resume_header_intro: "<p>Staff-level engineer with 9+ years building and operating distributed systems at scale. Technical lead and founding member of teams from 0→1; strong in system design, cross-team alignment, and mentoring. Currently Principal Engineer at Oracle Health (patient portal); prior: OCI AI Infrastructure (data center &amp; GPU inventory), OCI control-plane database (1M+ req/s, 40+ regions), Nike (cloud-native retail), and healthcare integration.</p>"
 
 # use "yes" to display the email contact button,
 # "no" to display an "I'm not looking for work" message,

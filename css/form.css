@@ -57,9 +57,18 @@ form [type="submit"],
 form [type="reset"] {
   width: auto;
   cursor: pointer;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
   -webkit-appearance: button;
   -moz-appearance: button;
   appearance: button;
+}
+form [type="submit"]:hover {
+  background: #1e293b;
 }
 form [type="button"]:focus,
 form [type="submit"]:focus,

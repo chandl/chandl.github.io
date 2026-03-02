@@ -1,7 +1,10 @@
-# Top Skills (from LinkedIn export)
-- skill: Oracle Database
-  description: ""
-- skill: Software Architecture
-  description: ""
+# Skills — mix of domain and tech for ATS and readability
 - skill: Distributed Systems
-  description: ""
+- skill: Software Architecture
+- skill: Java
+- skill: Python
+- skill: Oracle Database
+- skill: AWS
+- skill: System Design
+- skill: Technical Leadership
+- skill: HL7 / FHIR
