@@ -1,41 +1,67 @@
-# Jobs
+# Experience (from LinkedIn export)
 
-# Oracle
-# Senior Software Engineer
+# Oracle Health
 - company: Oracle
-  position: Senior Software Engineer
-  duration: Nov, 2020 &mdash; Present
-  summary: 'I am currently a Senior Software Engineer at Oracle Cloud Infrastructure. I am on a team that builds a cloud-scale NoSQL database system which handles 1M+ request/sec globally. The product I work on is utilized by nearly all teams within Oracle Cloud as the backing database for service control planes.
+  position: Principal Software Engineer, Oracle Health
+  duration: Dec, 2025 &mdash; Present
+  summary: 'Principal engineer on the next-generation Oracle Health Patient Portal. Washington, United States.'
 
-<br/><br/>
-<b>Technologies</b>: Java 8-11, Python, Dropwizard, Guice, Oracle Cloud Infrastructure, Oracle Datbase + Autonomous Database, custom CI/CD, docker. Automated functional tests, unit tests, a full e2e integration test suite using test driven development and canaries.'
+# OCI AI Infrastructure
+- company: Oracle
+  position: Principal Software Engineer, OCI AI Infrastructure
+  duration: Sep, 2023 &mdash; Dec, 2025
+  summary: 'Founding Principal/Staff engineer on a team building a data center management system for one of the world''s largest AI training/inference facilities. Washington, United States.
+  <br/><br/><b>Key achievements</b>:
+  <ul class="resume-item-list">
+  <li>Founding member; onboarded 20+ engineers and set technical direction for the org (now hundreds of engineers).</li>
+  <li>Team lead for asset management (inventory) with 10+ engineers; drove inventory system from 0 to 1 and served as SME for post go-live support.</li>
+  <li>Built and owned Rack Handover tooling to validate readiness and hand over GPU/Compute racks to customers; validated &gt;$1B of hardware before handover.</li>
+  <li>Conducted 70+ interviews for Senior/Principal engineers.</li>
+  <li>Built scrumhost.app for sprint planning and backlog refinement.</li>
+  </ul>'
+
+# OCI Control Plane Platform
+- company: Oracle
+  position: Senior Software Engineer, OCI Control Plane Platform
+  duration: Nov, 2020 &mdash; Sep, 2023
+  summary: 'Senior engineer on an Oracle Cloud Tier-0 team building and maintaining an internal NoSQL database: 1M+ req/s across 40+ regions, used by hundreds of OCI teams for control-plane metadata. Portland, Oregon.
+  <br/><br/><b>Key achievements</b>:
+  <ul class="resume-item-list">
+  <li>Wrote ECAR design doc on database migration; named one of three best architecture documents of FY24 across OCI; now used as an example for future designs.</li>
+  <li>Designed and implemented client-side service discovery used by hundreds of internal teams to migrate databases seamlessly.</li>
+  <li>Built on-call shadowing program from the ground up; mentored 20+ engineers through onboarding.</li>
+  <li>Project lead for multiple sub-teams (5–10 people); modernized internal developer tooling (1M+ internal downloads).</li>
+  <li>Designed password rotation for disconnected National Security regions—30k database passwords, zero downtime, no direct environment access.</li>
+  <li>FY23 on-call: resolved nearly 700 SEV-2/SEV-3 incidents; improved multitenant connection library performance by 200%.</li>
+  </ul>'
 
 # Nike
-# Software Engineer, Contract
 - company: Nike
-  position: Software Engineer, Contract
+  position: Software Engineer (ETW)
   duration: Sept, 2019 &mdash; Nov, 2020
-  summary: 'Developer on a cloud-native backend team; built web services that powered mobile point of sale devices and self checkout kiosks in Nike retail stores. Contract Software Engineer employed through Randstad Technologies US.
-  <br/><br/>
-  <b>Technologies</b>: Java 8-11, Node.js, AWS (Lambda and EC2), Jenkins CI/CD, and Docker. Automated functional tests, unit tests, and a full e2e integration test suite using test driven + behavior driven development.'
+  summary: 'Cloud-native backend developer building AWS microservices for Nike retail (point of sale, self-checkout). DevOps rotation: owned scalability, resilience, and availability. Beaverton, Oregon.'
 
-# Shasta Networks
+# Shasta Networks - Software Engineer
 - company: Shasta Networks
   position: Software Engineer
   duration: Oct, 2018 &mdash; Aug, 2019
-  summary: 'Developer and technical lead on multiple projects. Lead developer on project to create automated validation tool for HL7/FHIR (healthcare) data to streamline integration. Lead developer on project to create dashboards/visualizations on healthcare data for healthcare execs to make informed, data-driven decisions.
-  <br/><br/>
-  <b>Technologies</b>: Java, Bash, Technical Writing, Site Reliability Engineering, AWS, Unix Administration'
+  summary: 'Ashland, Oregon.
+  <br/><br/><b>Key achievements</b>:
+  <ul class="resume-item-list">
+  <li>Technical lead: inline HL7/FHIR conformance and validation tool for healthcare data.</li>
+  <li>Technical lead: compiled patient data from multiple sources into clinical charts for a large medical billing company.</li>
+  <li>Led infrastructure migration planning; proposed hybrid microservice architecture; introduced AWS.</li>
+  <li>Mentored junior engineers and interns; co-designed and ran 2019 Shasta Networks Hackathon.</li>
+  </ul>'
 
+# Shasta Networks - Integration Engineer
 - company: Shasta Networks
   position: Integration Engineer
-  duration:  Jun, 2016 &mdash; Oct, 2018
-  summary: 'Developer and SRE role, where I helped lead the implementation of hundreds of java-based HL7 interfaces. Acted as the main technical liaison between a large client, providing direct software support for creating, updating, and troubleshooting over 400 interfaces between a variety of source and destination health information systems, interface engines, and billing systems.
-  <br/><br/>
-  <b>Technologies</b>: Java, Bash, Technical Writing, Site Reliability Engineering, AWS, Unix Administration'
+  duration: Jun, 2016 &mdash; Oct, 2018
+  summary: 'Ashland, Oregon. Project lead for hundreds of Java-based HL7 routes from startup to production. Technical liaison for a large client: created, updated, and troubleshooted 400+ interfaces across health information systems, interface engines, and billing. Managed-service support for a Java integration engine; documented work and built knowledge-base content for new features and processes.'
 
-# SOU
+# Southern Oregon University
 - company: Southern Oregon University
-  position: (Senior) Help Desk Technician
+  position: Senior Help Desk Technician
   duration: Oct, 2014 &mdash; Jun, 2016
-  summary: 'Frontline help desk role, I helped with technology-related questions from students and staff. I troubleshot, diagnosed, and resolved problems relating to user accounts, the general operation of personal computers, and specific issues regarding programs and personal devices. As a Senior Technician, I helped mentor others and provide higher-level support for complicated issues.'
+  summary: 'Help desk technician; promoted to Senior. Mentored peers and provided escalation support for students and staff. Ashland, Oregon.'
