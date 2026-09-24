@@ -1,0 +1,316 @@
+---
+import { getCollection } from 'astro:content';
+import Icon, { type IconName } from './Icon.astro';
+import { profile } from '../data/resume';
+
+type Item = {
+  group: string;
+  label: string;
+  hint?: string;
+  icon: IconName;
+  action: { href: string; external?: boolean } | { run: 'copy-email' | 'theme' | 'print' };
+};
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+const items: Item[] = [
+  ...['top', 'projects', 'experience', 'toolkit', 'contact'].map(
+    (id): Item => ({ group: 'Navigate', label: id === 'top' ? 'home' : id, hint: `#${id}`, icon: 'hash', action: { href: `#${id}` } }),
+  ),
+  ...projects.flatMap(({ data }): Item[] => [
+    ...(data.url
+      ? [{ group: 'Projects', label: data.title, hint: 'visit', icon: 'arrow', action: { href: data.url, external: true } } as Item]
+      : []),
+    { group: 'Projects', label: `${data.title} source`, hint: 'github', icon: 'github', action: { href: data.repo, external: true } },
+  ]),
+  { group: 'Links', label: 'Copy email', hint: profile.email, icon: 'copy', action: { run: 'copy-email' } },
+  { group: 'Links', label: 'GitHub', hint: 'github.com/chandl', icon: 'github', action: { href: profile.links.github, external: true } },
+  { group: 'Links', label: 'LinkedIn', icon: 'linkedin', action: { href: profile.links.linkedin, external: true } },
+  { group: 'Links', label: 'Download CV', icon: 'download', action: { href: profile.cv, external: true } },
+  { group: 'Site', label: 'Toggle theme', icon: 'sun', action: { run: 'theme' } },
+  { group: 'Site', label: 'Print resume', icon: 'printer', action: { run: 'print' } },
+];
+
+const groups = [...new Set(items.map((i) => i.group))];
+---
+
+<dialog class="cmdk no-print" data-cmdk aria-label="Command palette" data-email={profile.email}>
+  <div class="panel">
+    <div class="search">
+      <Icon name="search" size={16} />
+      <input
+        type="text"
+        placeholder="Type a command or search…"
+        aria-label="Search commands"
+        autocomplete="off"
+        spellcheck="false"
+        role="combobox"
+        aria-expanded="true"
+        aria-controls="cmdk-list"
+        data-cmdk-input
+      />
+      <kbd>esc</kbd>
+    </div>
+
+    <div class="list" id="cmdk-list" role="listbox" data-cmdk-list>
+      {
+        groups.map((g) => (
+          <div class="group" data-group>
+            <p class="group-label mono">{g}</p>
+            {items
+              .filter((i) => i.group === g)
+              .map((i) => (
+                <button
+                  type="button"
+                  class="item"
+                  role="option"
+                  data-item
+                  data-label={i.label.toLowerCase() + ' ' + (i.hint ?? '').toLowerCase()}
+                  data-href={'href' in i.action ? i.action.href : undefined}
+                  data-external={'href' in i.action && i.action.external ? '' : undefined}
+                  data-run={'run' in i.action ? i.action.run : undefined}
+                >
+                  <Icon name={i.icon} size={15} />
+                  <span class="item-label">{i.label}</span>
+                  {i.hint && <span class="item-hint mono">{i.hint}</span>}
+                </button>
+              ))}
+          </div>
+        ))
+      }
+      <p class="empty mono" data-cmdk-empty hidden>No results.</p>
+    </div>
+
+    <div class="foot mono">
+      <span><kbd>↑</kbd> <kbd>↓</kbd> navigate</span>
+      <span><kbd>↵</kbd> select</span>
+    </div>
+  </div>
+</dialog>
+
+<style>
+  .cmdk {
+    width: min(620px, calc(100vw - 32px));
+    max-height: min(520px, calc(100svh - 120px));
+    margin: 12vh auto auto;
+    padding: 0;
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    background: color-mix(in srgb, var(--bg-elev) 92%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: var(--fg);
+    box-shadow:
+      0 40px 120px -20px rgb(0 0 0 / 0.6),
+      0 0 0 1px var(--line);
+    overflow: hidden;
+  }
+
+  .cmdk[open] {
+    animation: pop 0.22s var(--ease-out);
+  }
+
+  .cmdk::backdrop {
+    background: rgb(0 0 0 / 0.45);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.98);
+    }
+  }
+
+  .panel {
+    display: flex;
+    flex-direction: column;
+    max-height: inherit;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  .search input {
+    flex: 1;
+    min-width: 0;
+    font: inherit;
+    font-size: 16px;
+    color: var(--fg);
+    background: none;
+    border: 0;
+    outline: none;
+  }
+
+  .list {
+    overflow-y: auto;
+    padding: 8px;
+    overscroll-behavior: contain;
+  }
+
+  .group-label {
+    padding: 10px 10px 6px;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 14.5px;
+    color: var(--fg-dim);
+  }
+
+  .item[aria-selected='true'] {
+    background: var(--bg-elev-2);
+    color: var(--fg);
+    box-shadow: inset 2px 0 0 var(--accent);
+  }
+
+  .item[aria-selected='true'] :global(svg) {
+    color: var(--accent);
+  }
+
+  .item-label {
+    flex: 1;
+  }
+
+  .item-hint {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .empty {
+    padding: 28px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .foot {
+    display: flex;
+    gap: 16px;
+    padding: 10px 18px;
+    border-top: 1px solid var(--line);
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+
+  @media (hover: none) {
+    .foot {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-cmdk]')!;
+  const input = dialog.querySelector<HTMLInputElement>('[data-cmdk-input]')!;
+  const items = [...dialog.querySelectorAll<HTMLButtonElement>('[data-item]')];
+  const groups = [...dialog.querySelectorAll<HTMLElement>('[data-group]')];
+  const empty = dialog.querySelector<HTMLElement>('[data-cmdk-empty]')!;
+  let visible = items;
+  let active = 0;
+
+  // Subsequence match: "tmp" matches "tmpmail.fyi", "gh" matches "github".
+  const matches = (hay: string, q: string) => {
+    let i = 0;
+    for (const ch of hay) if (ch === q[i]) i++;
+    return i === q.length;
+  };
+
+  function select(i: number) {
+    active = (i + visible.length) % Math.max(visible.length, 1);
+    visible.forEach((el, j) => el.setAttribute('aria-selected', String(j === active)));
+    visible[active]?.scrollIntoView({ block: 'nearest' });
+  }
+
+  function filter() {
+    const q = input.value.trim().toLowerCase().replace(/\s+/g, '');
+    visible = [];
+    for (const el of items) {
+      const ok = !q || matches(el.dataset.label!.replace(/\s+/g, ''), q);
+      el.hidden = !ok;
+      el.setAttribute('aria-selected', 'false');
+      if (ok) visible.push(el);
+    }
+    for (const g of groups) g.hidden = !g.querySelector('[data-item]:not([hidden])');
+    empty.hidden = visible.length > 0;
+    select(0);
+  }
+
+  function open() {
+    if (dialog.open) return;
+    input.value = '';
+    filter();
+    dialog.showModal();
+    input.focus();
+  }
+
+  function run(el: HTMLButtonElement) {
+    dialog.close();
+    const { href, run: cmd } = el.dataset;
+    if (href) {
+      if (el.hasAttribute('data-external')) {
+        window.open(href, '_blank', 'noopener');
+      } else {
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
+        history.replaceState(null, '', href);
+      }
+    } else if (cmd === 'copy-email') {
+      navigator.clipboard?.writeText(dialog.dataset.email!);
+    } else if (cmd === 'theme') {
+      document.querySelector<HTMLButtonElement>('[data-theme-toggle]')?.click();
+    } else if (cmd === 'print') {
+      setTimeout(() => window.print(), 50);
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      dialog.open ? dialog.close() : open();
+    }
+  });
+
+  document.querySelectorAll('[data-cmdk-open]').forEach((b) => b.addEventListener('click', open));
+
+  input.addEventListener('input', filter);
+  input.addEventListener('keydown', (e) => {
+    const moves: Record<string, number> = { ArrowDown: 1, ArrowUp: -1 };
+    if (e.key in moves) {
+      e.preventDefault();
+      select(active + moves[e.key]);
+    } else if (e.key === 'Enter' && visible[active]) {
+      e.preventDefault();
+      run(visible[active]);
+    }
+  });
+
+  items.forEach((el) => {
+    el.addEventListener('click', () => run(el));
+    el.addEventListener('pointermove', () => {
+      const i = visible.indexOf(el);
+      if (i !== active) select(i);
+    });
+  });
+
+  // Click on the backdrop closes.
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog) dialog.close();
+  });
+</script>

@@ -1,0 +1,232 @@
+---
+import Icon from './Icon.astro';
+
+const links = [
+  { href: '#projects', label: 'projects' },
+  { href: '#experience', label: 'experience' },
+  { href: '#contact', label: 'contact' },
+];
+---
+
+<header class="nav no-print">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo mono" aria-label="chandl.io — back to top">
+      <span class="logo-prompt">~/</span>chandl<span class="logo-caret">_</span>
+    </a>
+
+    <nav aria-label="Sections">
+      <ul class="links mono">
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} data-spy={l.href.slice(1)}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <button class="cmdk-trigger mono" type="button" data-cmdk-open aria-label="Open command palette">
+        <Icon name="search" size={14} />
+        <kbd>⌘K</kbd>
+      </button>
+      <button class="icon-btn" type="button" data-theme-toggle aria-label="Toggle color theme">
+        <Icon name="sun" class="i-sun" />
+        <Icon name="moon" class="i-moon" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 0.3s,
+      border-color 0.3s,
+      backdrop-filter 0.3s;
+  }
+
+  :global(html.scrolled) .nav {
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border-bottom-color: var(--line);
+  }
+
+  .nav-inner {
+    height: 64px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .logo {
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-prompt {
+    color: var(--muted);
+  }
+
+  .logo-caret {
+    color: var(--accent);
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  nav {
+    margin-left: auto;
+  }
+
+  .links {
+    display: flex;
+    gap: 4px;
+    font-size: 13px;
+  }
+
+  .links a {
+    display: block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--muted);
+    transition:
+      color 0.2s,
+      background-color 0.2s;
+  }
+
+  .links a:hover {
+    color: var(--fg);
+  }
+
+  .links a[aria-current='true'] {
+    color: var(--fg);
+    background: var(--bg-elev-2);
+  }
+
+  .links a[aria-current='true']::before {
+    content: '#';
+    color: var(--accent);
+  }
+
+  .actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .cmdk-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 34px;
+    padding: 0 6px 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    color: var(--muted);
+    transition: border-color 0.2s;
+  }
+
+  .cmdk-trigger:hover,
+  .icon-btn:hover {
+    border-color: var(--fg-dim);
+    color: var(--fg);
+  }
+
+  .icon-btn {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    color: var(--muted);
+    transition: border-color 0.2s;
+  }
+
+  .icon-btn :global(.i-moon) {
+    display: none;
+  }
+
+  :global([data-theme='light']) .icon-btn :global(.i-sun) {
+    display: none;
+  }
+
+  :global([data-theme='light']) .icon-btn :global(.i-moon) {
+    display: block;
+  }
+
+  @media (hover: none) {
+    .cmdk-trigger {
+      padding-right: 12px;
+    }
+    .cmdk-trigger kbd {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    nav {
+      display: none;
+    }
+    .actions {
+      margin-left: auto;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+
+  // Frosted nav once the page scrolls.
+  const onScroll = () => root.classList.toggle('scrolled', window.scrollY > 12);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Theme toggle.
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+    const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+
+  // Scroll spy: highlight the section currently in view.
+  const spyLinks = [...document.querySelectorAll<HTMLAnchorElement>('[data-spy]')];
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        for (const a of spyLinks) a.setAttribute('aria-current', String(a.dataset.spy === entry.target.id));
+      }
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  for (const a of spyLinks) {
+    const section = document.getElementById(a.dataset.spy!);
+    if (section) observer.observe(section);
+  }
+  const top = document.getElementById('top');
+  if (top) {
+    new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) spyLinks.forEach((a) => a.setAttribute('aria-current', 'false'));
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    ).observe(top);
+  }
+</script>

@@ -1,0 +1,155 @@
+---
+import Icon from './Icon.astro';
+import { profile } from '../data/resume';
+
+const year = new Date().getFullYear();
+---
+
+<section id="contact" class="section contact no-print">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="section-label"><b>04</b> / contact</span>
+      <h2 class="big">
+        Let's build<br /><span class="outline">something.</span>
+      </h2>
+    </header>
+
+    <div class="row reveal">
+      <button class="email mono" type="button" data-copy={profile.email} aria-label={`Copy ${profile.email}`}>
+        <span class="email-text">{profile.email}</span>
+        <span class="email-hint" data-copy-hint>
+          <Icon name="copy" size={14} /> copy
+        </span>
+      </button>
+
+      <div class="links">
+        <a class="btn" href={profile.links.github} target="_blank" rel="noopener"><Icon name="github" /> GitHub</a>
+        <a class="btn" href={profile.links.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" /> LinkedIn</a>
+        <a class="btn" href={profile.cv} target="_blank" rel="noopener"><Icon name="download" /> CV</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer no-print">
+  <div class="wrap footer-inner mono">
+    <span>© {year} {profile.name}</span>
+    <span class="hint">press <kbd>⌘</kbd> <kbd>K</kbd> to navigate</span>
+    <a href={`${profile.links.github}/chandl.io`} target="_blank" rel="noopener">view source ↗</a>
+  </div>
+</footer>
+
+<style>
+  .big {
+    font-size: clamp(48px, 9vw, 112px);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+    font-weight: 700;
+  }
+
+  /* muted text that floods with the accent color on hover */
+  .outline {
+    color: transparent;
+    background:
+      linear-gradient(var(--accent), var(--accent)) no-repeat 0 0 / 0% 100%,
+      linear-gradient(var(--muted), var(--muted));
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: background-size 0.8s var(--ease-out);
+  }
+
+  .big:hover .outline {
+    background-size:
+      100% 100%,
+      auto;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .email {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--fg);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line-strong);
+    transition: border-color 0.2s;
+  }
+
+  .email:hover {
+    border-color: var(--accent);
+  }
+
+  .email-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .email:hover .email-hint,
+  .email-hint.copied {
+    color: var(--accent);
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .footer {
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+
+  .footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  .footer a:hover {
+    color: var(--fg);
+  }
+
+  @media (hover: none) {
+    .hint {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    const hint = btn.querySelector<HTMLElement>('[data-copy-hint]');
+    const original = hint?.innerHTML ?? '';
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy!);
+        if (hint) {
+          hint.textContent = '✓ copied';
+          hint.classList.add('copied');
+          setTimeout(() => {
+            hint.innerHTML = original;
+            hint.classList.remove('copied');
+          }, 1600);
+        }
+      } catch {
+        location.href = `mailto:${btn.dataset.copy}`;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,141 @@
+---
+import { skills, education, recognitions } from '../data/resume';
+---
+
+<section id="toolkit" class="section">
+  <div class="wrap">
+    <header class="section-head reveal">
+      <span class="section-label"><b>03</b> / toolkit</span>
+      <h2 class="section-title">Skills &amp; background.</h2>
+    </header>
+
+    <div class="cols">
+      <div class="block reveal">
+        <h3 class="block-title mono">// skills</h3>
+        <ul class="chips">
+          {skills.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+
+      <div class="block reveal">
+        <h3 class="block-title mono">// education</h3>
+        {
+          education.map((e) => (
+            <div class="entry">
+              <p class="entry-main">{e.degree}</p>
+              <p class="entry-sub">
+                {e.school} <span class="mono">· {e.years}</span>
+              </p>
+            </div>
+          ))
+        }
+
+        <h3 class="block-title mono spaced">// recognition</h3>
+        {
+          recognitions.map((r) => (
+            <div class="entry">
+              <p class="entry-main">{r.award}</p>
+              <p class="entry-sub">
+                {r.org} <span class="mono">· {r.year}</span>
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cols {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 16px;
+  }
+
+  .block {
+    padding: 28px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+  }
+
+  .block-title {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 18px;
+  }
+
+  .spaced {
+    margin-top: 32px;
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chips li {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    font-size: 14px;
+    color: var(--fg-dim);
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      background-color 0.2s,
+      transform 0.3s var(--ease-out);
+  }
+
+  .chips li:hover {
+    color: var(--fg);
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    transform: translateY(-2px);
+  }
+
+  .entry + .entry {
+    margin-top: 14px;
+  }
+
+  .entry-main {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .entry-sub {
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .entry-sub .mono {
+    font-size: 12.5px;
+  }
+
+  @media (max-width: 800px) {
+    .cols {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media print {
+    .cols {
+      grid-template-columns: 1fr 1fr;
+    }
+    .block {
+      padding: 0;
+      border: 0;
+    }
+    .chips li {
+      padding: 0;
+      border: 0;
+      font-size: 10.5pt;
+    }
+    .chips li:not(:last-child)::after {
+      content: ' ·';
+    }
+  }
+</style>
