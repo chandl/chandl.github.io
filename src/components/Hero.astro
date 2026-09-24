@@ -19,8 +19,8 @@ const [first, last] = profile.name.split(' ');
     </div>
 
     <h1 class="name" aria-label={profile.name}>
-      <span data-scramble data-text={first} aria-hidden="true">{first}</span>
-      <span data-scramble data-text={last} aria-hidden="true" class="last">{last}</span>
+      <span class="word" data-scramble aria-hidden="true">{first}</span>
+      <span class="word last" data-scramble aria-hidden="true">{last}</span>
     </h1>
 
     <p class="role">
@@ -135,6 +135,18 @@ const [first, last] = profile.name.split(' ');
     animation-delay: calc(0.75s + var(--i) * 0.08s);
   }
 
+  /* Blurring huge text is costly; the name just fades and rises. */
+  .name {
+    animation-name: rise-clean;
+  }
+
+  @keyframes rise-clean {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+  }
+
   @keyframes rise {
     from {
       opacity: 0;
@@ -211,6 +223,35 @@ const [first, last] = profile.name.split(' ');
     display: flex;
     flex-wrap: wrap;
     column-gap: 0.25em;
+  }
+
+  /* While decoding, the real word stays in the layout (invisible) so the
+     random glyphs drawn on top can never change its size or wrapping. */
+  .word {
+    position: relative;
+  }
+
+  .name .word:global(.scrambling) {
+    color: transparent;
+    background: none;
+  }
+
+  .word :global(.glyphs) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap;
+    color: var(--fg);
+  }
+
+  .last :global(.glyphs) {
+    color: var(--muted);
+  }
+
+  .word :global(.glyphs i) {
+    font-style: normal;
+    color: var(--accent);
+    opacity: 0.7;
   }
 
   .name .last {
