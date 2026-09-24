@@ -1,0 +1,432 @@
+---
+import { Picture } from 'astro:assets';
+import Icon from './Icon.astro';
+import avatar from '../assets/avatar.png';
+import { profile, stats } from '../data/resume';
+
+const [first, last] = profile.name.split(' ');
+---
+
+<section id="top" class="hero">
+  <canvas class="field no-print" aria-hidden="true"></canvas>
+
+  <div class="wrap hero-inner">
+    <div class="prompt mono no-print" aria-hidden="true">
+      <Picture src={avatar} formats={['avif', 'webp']} width={64} height={64} alt="" class="avatar" loading="eager" />
+      <span class="path">~/{profile.handle}</span>
+      <span class="dollar">$</span>
+      <span class="typed">whoami</span><span class="cursor"></span>
+    </div>
+
+    <h1 class="name" aria-label={profile.name}>
+      <span data-scramble data-text={first} aria-hidden="true">{first}</span>
+      <span data-scramble data-text={last} aria-hidden="true" class="last">{last}</span>
+    </h1>
+
+    <p class="role">
+      {profile.title}
+      <span class="sep">/</span>
+      <span class="loc">{profile.location}</span>
+      <span class="print-only-inline"> · {profile.email}</span>
+    </p>
+
+    <p class="intro">{profile.intro}</p>
+
+    <div class="now mono no-print">
+      <span class="pulse" aria-hidden="true"></span>
+      now: {profile.now}
+    </div>
+
+    <div class="ctas no-print">
+      <a href="#projects" class="btn btn-primary">
+        <Icon name="code" /> Side projects
+      </a>
+      <a href={profile.cv} target="_blank" rel="noopener" class="btn">
+        <Icon name="download" /> Download CV
+      </a>
+      <div class="socials">
+        <a href={profile.links.github} target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
+          <Icon name="github" size={18} />
+        </a>
+        <a href={profile.links.linkedin} target="_blank" rel="noopener" class="icon-link" aria-label="LinkedIn">
+          <Icon name="linkedin" size={18} />
+        </a>
+        <a href={`mailto:${profile.email}`} class="icon-link" aria-label="Email">
+          <Icon name="mail" size={18} />
+        </a>
+      </div>
+    </div>
+
+    <dl class="stats no-print">
+      {
+        stats.map((s, i) => (
+          <div class="stat" style={`--i:${i}`}>
+            <dt class="mono">{s.label}</dt>
+            <dd>{s.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+
+  <a href="#projects" class="scroll-hint mono no-print" aria-label="Scroll to projects">
+    <span>scroll</span>
+    <span class="line"></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding-block: 120px 96px;
+    overflow: hidden;
+  }
+
+  .field {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    mask-image: radial-gradient(ellipse 90% 80% at 60% 45%, #000 30%, transparent 80%);
+  }
+
+  .field:global(.ready) {
+    opacity: 1;
+  }
+
+  .hero-inner {
+    position: relative;
+  }
+
+  /* entrance choreography */
+  .prompt,
+  .name,
+  .role,
+  .intro,
+  .now,
+  .ctas,
+  .stat {
+    animation: rise 0.9s var(--ease-out) both;
+  }
+  .prompt {
+    animation-delay: 0.05s;
+  }
+  .name {
+    animation-delay: 0.15s;
+  }
+  .role {
+    animation-delay: 0.35s;
+  }
+  .intro {
+    animation-delay: 0.45s;
+  }
+  .now {
+    animation-delay: 0.55s;
+  }
+  .ctas {
+    animation-delay: 0.65s;
+  }
+  .stat {
+    animation-delay: calc(0.75s + var(--i) * 0.08s);
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+      filter: blur(8px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+
+  .prompt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .prompt :global(.avatar) {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    object-fit: cover;
+  }
+
+  .path {
+    color: var(--fg-dim);
+  }
+
+  .dollar {
+    color: var(--accent);
+  }
+
+  .typed {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 6ch;
+    color: var(--fg);
+    animation: type 0.7s steps(6) 0.5s both;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--accent);
+    margin-left: 2px;
+    animation: blink 1.1s steps(1) infinite;
+  }
+
+  @keyframes type {
+    from {
+      width: 0;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+
+  .name {
+    font-size: clamp(52px, 10.5vw, 128px);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+    font-weight: 700;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.25em;
+  }
+
+  .name .last {
+    color: transparent;
+    background: linear-gradient(95deg, var(--muted) 0%, var(--fg-dim) 55%, var(--accent) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .role {
+    margin-top: 28px;
+    font-size: clamp(18px, 2.2vw, 22px);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .sep {
+    color: var(--accent);
+    margin-inline: 8px;
+  }
+
+  .loc {
+    color: var(--muted);
+  }
+
+  .print-only-inline {
+    display: none;
+  }
+
+  .intro {
+    margin-top: 18px;
+    max-width: 68ch;
+    color: var(--fg-dim);
+    font-size: 16.5px;
+  }
+
+  .now {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 14px 6px 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-size: 12.5px;
+    color: var(--fg-dim);
+    background: color-mix(in srgb, var(--bg-elev) 70%, transparent);
+    backdrop-filter: blur(6px);
+  }
+
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 99px;
+    background: var(--accent);
+    box-shadow: 0 0 0 0 var(--accent);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 60%, transparent);
+    }
+    70%,
+    100% {
+      box-shadow: 0 0 0 10px transparent;
+    }
+  }
+
+  .ctas {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .socials {
+    display: flex;
+    gap: 4px;
+    margin-left: 4px;
+  }
+
+  .icon-link {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 999px;
+    color: var(--muted);
+    transition:
+      color 0.2s,
+      background-color 0.2s;
+  }
+
+  .icon-link:hover {
+    color: var(--fg);
+    background: var(--bg-elev-2);
+  }
+
+  .stats {
+    margin: 64px 0 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    max-width: 760px;
+  }
+
+  .stat {
+    padding: 18px 16px 0 0;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2px;
+  }
+
+  .stat dt {
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .stat dd {
+    margin: 0;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 650;
+    letter-spacing: -0.03em;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 28px;
+    translate: -50% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .scroll-hint .line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(var(--accent), transparent);
+    transform-origin: top;
+    animation: drip 2s var(--ease-out) infinite;
+  }
+
+  @keyframes drip {
+    0% {
+      transform: scaleY(0);
+      opacity: 1;
+    }
+    60% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .stats {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .scroll-hint {
+      display: none;
+    }
+  }
+
+  @media (max-height: 760px) {
+    .scroll-hint {
+      display: none;
+    }
+  }
+
+  @media print {
+    .hero {
+      min-height: 0;
+      padding: 0 0 12px;
+    }
+    .name {
+      font-size: 32pt;
+      animation: none;
+    }
+    .name .last {
+      color: #000;
+      background: none;
+    }
+    .role,
+    .intro {
+      animation: none;
+      margin-top: 8px;
+    }
+    .intro {
+      font-size: 10.5pt;
+      max-width: none;
+    }
+    .print-only-inline {
+      display: inline;
+    }
+  }
+</style>
+
+<script>
+  import { initField, scramble } from '../scripts/field';
+
+  document.querySelectorAll<HTMLElement>('[data-scramble]').forEach((el, i) => scramble(el, { delay: 150 + i * 180 }));
+
+  const canvas = document.querySelector<HTMLCanvasElement>('canvas.field');
+  if (canvas) {
+    // Don't compete with first paint.
+    const go = () => initField(canvas);
+    'requestIdleCallback' in window ? requestIdleCallback(go, { timeout: 600 }) : setTimeout(go, 200);
+  }
+</script>
