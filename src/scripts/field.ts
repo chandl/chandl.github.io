@@ -140,24 +140,47 @@ export function initField(canvas: HTMLCanvasElement) {
   start();
 }
 
-/** Decode text into place, left to right, from random glyphs. */
-export function scramble(el: HTMLElement, { duration = 1100, delay = 0 } = {}) {
-  const final = el.dataset.text ?? el.textContent ?? '';
+/**
+ * Decode text into place, left to right, from random glyphs. The real text
+ * stays in the element (hidden) to hold its exact size; glyphs are drawn in an
+ * absolutely-positioned overlay so the animation never causes layout shift.
+ */
+export function scramble(el: HTMLElement, { duration = 900, delay = 0 } = {}) {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const glyphs = '!<>-_\\/[]{}—=+*^?#01ABCDEFabcdef';
+  const final = el.textContent ?? '';
+  // Match each letter's case so the noise stays close to the real word's width.
+  const upper = 'ABCDEGHKNRSUXZ';
+  const lower = 'abcdeghknorsuxz';
+  const TICK = 50; // ms between glyph swaps — per-frame swaps read as noise
+
+  const overlay = document.createElement('span');
+  overlay.className = 'glyphs';
+  overlay.setAttribute('aria-hidden', 'true');
+  el.classList.add('scrambling');
+  el.append(overlay);
+
   const start = performance.now() + delay;
+  let lastTick = -Infinity;
+  const noise = [...final].map(() => '');
 
   function frame(now: number) {
     const p = Math.max(0, Math.min(1, (now - start) / duration));
-    const settled = Math.floor(p * final.length);
-    let out = '';
-    for (let i = 0; i < final.length; i++) {
-      const ch = final[i];
-      out += i < settled || ch === ' ' ? ch : glyphs[(Math.random() * glyphs.length) | 0];
+    if (p >= 1) {
+      overlay.remove();
+      el.classList.remove('scrambling');
+      return;
     }
-    el.textContent = out;
-    if (p < 1) requestAnimationFrame(frame);
-    else el.textContent = final;
+    if (now - lastTick >= TICK) {
+      lastTick = now;
+      for (let i = 0; i < noise.length; i++) {
+        const set = final[i] === final[i].toUpperCase() ? upper : lower;
+        noise[i] = set[(Math.random() * set.length) | 0];
+      }
+    }
+    // Ease so the reveal decelerates into the final letters.
+    const settled = Math.floor((1 - (1 - p) ** 2) * final.length);
+    overlay.innerHTML = final.slice(0, settled) + (settled < final.length ? `<i>${noise.slice(settled).join('')}</i>` : '');
+    requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
 }
